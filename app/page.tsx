@@ -1,9 +1,11 @@
+import { FundSearch } from "@/components/fund-search";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { listFunds } from "@/lib/queries";
 
 const STEPS = [
   {
@@ -23,7 +25,11 @@ const STEPS = [
   },
 ] as const;
 
-export default function Home() {
+export default async function Home() {
+  // A server component reading Postgres directly: the list is small, already
+  // carries each fund's headline number, and never needs a client round trip.
+  const funds = await listFunds();
+
   return (
     <main className="mx-auto w-full max-w-[960px] px-4 py-16">
       <header className="max-w-2xl">
@@ -58,6 +64,23 @@ export default function Home() {
           isn&rsquo;t the index.
         </p>
       </header>
+
+      <section aria-labelledby="find-a-fund" className="mt-10">
+        <h2 id="find-a-fund" className="sr-only">
+          Find a fund
+        </h2>
+        {funds.length === 0 ? (
+          <Card>
+            <CardContent className="pt-6 text-sm text-muted-foreground">
+              No funds loaded yet. Run{" "}
+              <code className="rounded bg-muted px-1 py-0.5">npm run load</code> to load the
+              N-PORT fixtures.
+            </CardContent>
+          </Card>
+        ) : (
+          <FundSearch funds={funds} />
+        )}
+      </section>
 
       <section aria-labelledby="how-it-works" className="mt-14">
         <h2

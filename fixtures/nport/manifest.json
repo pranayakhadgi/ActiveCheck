@@ -1,0 +1,68 @@
+[
+  {
+    "ticker": "IVV",
+    "cik": "1100663",
+    "seriesId": "S000004310",
+    "name": "iShares Core S&P 500 ETF",
+    "file": "IVV.xml",
+    "accessionNo": "0002071691-26-019760",
+    "filedAt": "2026-08-25",
+    "reportDate": "2026-06-30",
+    "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1100663/000207169126019760/primary_doc.xml"
+  },
+  {
+    "ticker": "IVW",
+    "cik": "1100663",
+    "seriesId": "S000004311",
+    "name": "iShares S&P 500 Growth ETF",
+    "file": "IVW.xml",
+    "accessionNo": "0000940400-26-035157",
+    "filedAt": "2026-08-27",
+    "reportDate": "2026-06-30",
+    "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1100663/000094040026035157/primary_doc.xml"
+  },
+  {
+    "ticker": "IVE",
+    "cik": "1100663",
+    "seriesId": "S000004312",
+    "name": "iShares S&P 500 Value ETF",
+    "file": "IVE.xml",
+    "accessionNo": "0000940400-26-020826",
+    "filedAt": "2026-05-26",
+    "reportDate": "2026-03-31",
+    "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1100663/000094040026020826/primary_doc.xml"
+  },
+  {
+    "ticker": "FCNTX",
+    "cik": "24238",
+    "seriesId": "S000006037",
+    "name": "Fidelity Contrafund",
+    "file": "FCNTX.xml",
+    "accessionNo": "0000035402-26-003312",
+    "filedAt": "2026-05-26",
+    "reportDate": "2026-03-31",
+    "sourceUrl": "https://www.sec.gov/Archives/edgar/data/24238/000003540226003312/primary_doc.xml"
+  },
+  {
+    "ticker": "TRBCX",
+    "cik": "902259",
+    "seriesId": "S000002069",
+    "name": "T. Rowe Price Blue Chip Growth Fund, Inc.",
+    "file": "TRBCX.xml",
+    "accessionNo": "0001099263-26-009584",
+    "filedAt": "2026-08-27",
+    "reportDate": "2026-06-30",
+    "sourceUrl": "https://www.sec.gov/Archives/edgar/data/902259/000109926326009584/primary_doc.xml"
+  },
+  {
+    "ticker": "DODGX",
+    "cik": "29440",
+    "seriesId": "S000011202",
+    "name": "Dodge & Cox Stock Fund",
+    "file": "DODGX.xml",
+    "accessionNo": "0001193125-26-250426",
+    "filedAt": "2026-06-01",
+    "reportDate": "2026-03-31",
+    "sourceUrl": "https://www.sec.gov/Archives/edgar/data/29440/000119312526250426/primary_doc.xml"
+  }
+]
