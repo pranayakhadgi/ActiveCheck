@@ -28,5 +28,5 @@ npm run dev
 Next.js (App Router) + TypeScript strict · Tailwind + shadcn/ui + Recharts · Vitest · Postgres
 (Neon) with plain SQL through postgres.js · deployed on Vercel.
 
-See [CLAUDE.md](CLAUDE.md) for the project rules, [DESIGN.md](DESIGN.md) for the visual system and
-[docs/decisions.md](docs/decisions.md) for the decision log.
+See [docs/decisions.md](docs/decisions.md) for the decision log — every non-obvious choice, why it was
+made, and what it trades away.

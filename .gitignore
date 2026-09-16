@@ -42,3 +42,10 @@ fixtures/cache
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# agent + working notes (kept local, not in the repo)
+CLAUDE.md
+DESIGN.md
+PROMPTS.md
+.claude/
+docs/research/
