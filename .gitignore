@@ -49,3 +49,6 @@ DESIGN.md
 PROMPTS.md
 .claude/
 docs/research/
+
+.vercel
+.env*
