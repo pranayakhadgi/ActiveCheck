@@ -82,9 +82,8 @@ export function ProofSheet({ data }: { data: ProofSheetData }) {
 
         <div className="space-y-1 text-xs leading-5 text-muted-foreground">
           <p className="tabular">
-            {`${percentPoints(data.matchedPct)} of stock weight matched to ${
-              data.indexTicker ?? "the index fund"
-            }.`}
+            {percentPoints(data.matchedPct)} of stock weight matched to{" "}
+            {data.indexTicker ?? "the index fund"}.
           </p>
           <p className="tabular">
             {percentPoints(data.excludedPct)} non-equity excluded and weights rescaled.

@@ -11,8 +11,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "ActiveCheck — what you pay for active management",
+  // The product statement from docs/brand-and-hero.md, verbatim: the page, the
+  // meta description and the "What ActiveCheck measures" section all say the
+  // same sentence rather than three near-variants of it.
   description:
-    "Measure a fund's active share against index funds and turn the fee gap into an effective active fee. Built on public SEC N-PORT filings.",
+    "ActiveCheck shows how much of a fund's fee pays for active stock selection rather than market exposure. Built on public SEC N-PORT filings.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
