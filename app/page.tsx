@@ -4,6 +4,7 @@ import { FundSearch } from "@/components/fund-search";
 import { ProofSheet } from "@/components/proof-sheet";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
   TooltipContent,
@@ -205,6 +206,19 @@ export default async function Home() {
         </p>
       </section>
 
+      {/* One closing action, the same one as the hero: the page ends by
+          sending the reader to the combobox rather than to a new idea. */}
+      <section aria-labelledby="start" className="mt-14">
+        <Separator />
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+          <h2 id="start" className="max-w-xl text-lg leading-8">
+            Look up a fund and see what its stock-picking costs.
+          </h2>
+          <Button asChild size="lg">
+            <a href="#find-a-fund">Analyze a fund</a>
+          </Button>
+        </div>
+      </section>
     </main>
   );
 }
