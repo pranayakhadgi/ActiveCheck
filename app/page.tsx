@@ -1,10 +1,10 @@
+import Link from "next/link";
+
 import { FundSearch } from "@/components/fund-search";
+import { ProofSheet } from "@/components/proof-sheet";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { getHeroProof } from "@/lib/hero-proof";
 import { listFunds } from "@/lib/queries";
 
 const STEPS = [
@@ -26,44 +26,55 @@ const STEPS = [
 ] as const;
 
 export default async function Home() {
-  // A server component reading Postgres directly: the list is small, already
-  // carries each fund's headline number, and never needs a client round trip.
-  const funds = await listFunds();
+  // Two server-side reads, in parallel: the fund list behind the combobox and
+  // the one worked example the hero shows. Both come from the stored results
+  // `npm run load` wrote, so the page renders a handful of indexed selects.
+  const [funds, proof] = await Promise.all([listFunds(), getHeroProof()]);
 
   return (
-    <main className="mx-auto w-full max-w-[960px] px-4 py-16">
-      <header className="max-w-2xl">
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          ActiveCheck
-        </h1>
-        <p className="mt-3 text-lg text-muted-foreground">
-          How much are you actually paying for your fund manager&rsquo;s
-          stock-picking?
-        </p>
-        <p className="mt-6 text-base leading-7">
-          ActiveCheck measures a fund&rsquo;s{" "}
-          <Tooltip>
-            <TooltipTrigger className="underline decoration-dotted underline-offset-4">
-              active share
-            </TooltipTrigger>
-            <TooltipContent className="max-w-xs">
-              The share of a fund&rsquo;s portfolio that differs from its
-              closest index.
-            </TooltipContent>
-          </Tooltip>{" "}
-          against index funds, then turns the{" "}
-          <Tooltip>
-            <TooltipTrigger className="underline decoration-dotted underline-offset-4">
-              expense ratio
-            </TooltipTrigger>
-            <TooltipContent className="max-w-xs">
-              The yearly percentage of your money a fund charges to run itself.
-            </TooltipContent>
-          </Tooltip>{" "}
-          gap into an effective active fee &mdash; the price of the part that
-          isn&rsquo;t the index.
-        </p>
-      </header>
+    <main className="mx-auto w-full max-w-[960px] px-4 pb-16">
+      {/* Editorial, left-aligned, one band. On mobile the single column keeps
+          the brand's required order: headline, support, CTAs, provenance, then
+          the proof element — which never shrinks into decoration. */}
+      <section
+        aria-labelledby="hero-headline"
+        className="grid grid-cols-1 items-start gap-10 py-16 lg:grid-cols-12 lg:py-20"
+      >
+        <div className="lg:col-span-6">
+          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+            Built from public SEC N-PORT filings
+          </p>
+          <h1
+            id="hero-headline"
+            className="mt-3 text-3xl font-semibold tracking-tight sm:text-5xl"
+          >
+            See what a fund&rsquo;s stock-picking is really costing you.
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">
+            ActiveCheck compares a fund&rsquo;s holdings with available index
+            funds, measures active share, and translates the fee difference into
+            an effective active fee.
+          </p>
+
+          <div className="mt-7 flex flex-wrap items-center gap-2">
+            <Button asChild size="lg">
+              <a href="#find-a-fund">Analyze a fund</a>
+            </Button>
+            <Button asChild variant="link" size="lg" className="text-[var(--color-link)]">
+              <Link href="/methodology">Read the methodology</Link>
+            </Button>
+          </div>
+
+          <p className="mt-5 text-xs leading-5 text-muted-foreground">
+            Public SEC filing data · Report-period aware · Research tool, not
+            investment advice
+          </p>
+        </div>
+
+        <div className="lg:col-span-6">
+          <ProofSheet data={proof} />
+        </div>
+      </section>
 
       <section aria-labelledby="find-a-fund" className="mt-10">
         <h2 id="find-a-fund" className="sr-only">
@@ -120,6 +131,6 @@ export default async function Home() {
           today.
         </p>
       </section>
-    </main>
+        </main>
   );
 }
